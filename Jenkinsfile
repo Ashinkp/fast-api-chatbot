@@ -40,7 +40,7 @@ pipeline
                         sh """
                             echo "\$DOCKER_PASS" | docker login -u "\$DOCKER_USER" --password-stdin
                             
-                            docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} -t${DOCKER_IMAGE}:latest .
+                            docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} -t ${DOCKER_IMAGE}:latest -f Dockerfile .
                             
                             docker push ${DOCKER_IMAGE}:${env.BUILD_NUMBER}
                             docker push ${DOCKER_IMAGE}:latest
@@ -61,8 +61,8 @@ pipeline
                             
                             sed -i '/name: fast-api-chatbot/{n;s|image:.*|image: ${DOCKER_IMAGE}:${env.BUILD_NUMBER}|}' k8s/Deployment.yaml
                             
-                            git config user.name "suhaaail2004"
-                            git config user.email "suhailshihab444@gmail.com"
+                            git config user.name "Ashinkp"
+                            git config user.email "ashinkp33@gmail.com"
                             git commit -am "chore(manifest): update fast-api-chatbot image tag to ${env.BUILD_NUMBER} [skip ci]"
                             git push origin ${MANIFEST_BRANCH}
                         """
