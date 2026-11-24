@@ -1,0 +1,783 @@
+Started by user Ashin K P
+Obtained Jenkinsfile from git https://github.com/Ashinkp/fast-api-chatbot
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/fast-api-chatbot
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-cred
+Cloning the remote Git repository
+Cloning repository https://github.com/Ashinkp/fast-api-chatbot
+ > git init /var/lib/jenkins/workspace/fast-api-chatbot # timeout=10
+Fetching upstream changes from https://github.com/Ashinkp/fast-api-chatbot
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+using GIT_ASKPASS to set credentials this is the github credential
+ > git fetch --tags --force --progress -- https://github.com/Ashinkp/fast-api-chatbot +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/Ashinkp/fast-api-chatbot # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 117d835c809a6a9e4aefbd04a8fa9d804ff6ef6d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 117d835c809a6a9e4aefbd04a8fa9d804ff6ef6d # timeout=10
+Commit message: "latest"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Source Code)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-cred
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/fast-api-chatbot/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Ashinkp/fast-api-chatbot # timeout=10
+Fetching upstream changes from https://github.com/Ashinkp/fast-api-chatbot
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+using GIT_ASKPASS to set credentials this is the github credential
+ > git fetch --tags --force --progress -- https://github.com/Ashinkp/fast-api-chatbot +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 117d835c809a6a9e4aefbd04a8fa9d804ff6ef6d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 117d835c809a6a9e4aefbd04a8fa9d804ff6ef6d # timeout=10
+Commit message: "latest"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonarqube-env
+[Pipeline] {
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner -Dsonar.projectKey=fast-api-chatbot-key -Dsonar.projectName=fast-api-chatbot-project -Dsonar.sources=. -Dsonar.exclusions=*/venv/,/.venv/,/_pycache_/,/.pytest_cache/,/static/*
+12:13:58.289 INFO  Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/conf/sonar-scanner.properties
+12:13:58.299 INFO  Project root configuration file: NONE
+12:13:58.343 INFO  SonarScanner CLI 8.5.0.16571
+12:13:58.370 INFO  Linux 7.0.0-1017-aws amd64
+12:13:59.833 INFO  Communicating with SonarQube Server 9.9.8.100196
+12:14:00.663 INFO  Load global settings
+12:14:00.751 INFO  Load global settings (done) | time=90ms
+12:14:00.753 INFO  Server id: 243B8A4D-AaHuN_9faawbTAK-cS7J
+12:14:00.760 INFO  User cache: /var/lib/jenkins/.sonar/cache
+12:14:00.766 INFO  Load/download plugins
+12:14:00.767 INFO  Load plugins index
+12:14:00.824 INFO  Load plugins index (done) | time=57ms
+12:14:00.939 INFO  Load/download plugins (done) | time=173ms
+12:14:01.748 INFO  Process project properties
+12:14:01.760 INFO  Process project properties (done) | time=12ms
+12:14:01.768 INFO  Execute project builders
+12:14:01.772 INFO  Execute project builders (done) | time=3ms
+12:14:01.780 INFO  Project key: fast-api-chatbot-key
+12:14:01.780 INFO  Base dir: /var/lib/jenkins/workspace/fast-api-chatbot
+12:14:01.780 INFO  Working dir: /var/lib/jenkins/workspace/fast-api-chatbot/.scannerwork
+12:14:01.796 INFO  Load project settings for component key: 'fast-api-chatbot-key'
+12:14:02.034 INFO  Auto-configuring with CI 'Jenkins'
+12:14:02.040 INFO  Load quality profiles
+12:14:02.206 INFO  Load quality profiles (done) | time=166ms
+12:14:02.267 INFO  Load active rules
+12:14:03.903 INFO  Load active rules (done) | time=1635ms
+12:14:03.927 INFO  Load analysis cache
+12:14:03.957 INFO  Load analysis cache (404) | time=30ms
+12:14:04.091 INFO  Load project repositories
+12:14:04.099 INFO  Load project repositories (done) | time=8ms
+12:14:04.148 INFO  Indexing files...
+12:14:04.149 INFO  Project configuration:
+12:14:04.149 INFO    Excluded sources: */venv/, /.venv/, /_pycache_/, /.pytest_cache/, /static/*
+12:14:04.462 INFO  9 files indexed
+12:14:04.462 INFO  1 file ignored because of inclusion/exclusion patterns
+12:14:04.462 INFO  0 files ignored because of scm ignore settings
+12:14:04.464 INFO  Quality profile for css: Sonar way
+12:14:04.465 INFO  Quality profile for js: Sonar way
+12:14:04.465 INFO  Quality profile for py: Sonar way
+12:14:04.465 INFO  Quality profile for yaml: Sonar way
+12:14:04.465 INFO  ------------- Run sensors on module fast-api-chatbot-project
+12:14:04.634 INFO  Load metrics repository
+12:14:04.683 INFO  Load metrics repository (done) | time=49ms
+12:14:06.987 INFO  Sensor Python Sensor [python]
+12:14:06.991 WARN  Your code is analyzed as compatible with python 2 and 3 by default. This will prevent the detection of issues specific to python 2 or python 3. You can get a more precise analysis by setting a python version in your configuration via the parameter "sonar.python.version"
+12:14:07.007 INFO  Starting global symbols computation
+12:14:07.020 INFO  1 source file to be analyzed
+12:14:07.623 INFO  1/1 source file has been analyzed
+12:14:07.661 INFO  Starting rules execution
+12:14:07.663 INFO  1 source file to be analyzed
+12:14:08.157 INFO  1/1 source file has been analyzed
+12:14:08.157 INFO  The Python analyzer was able to leverage cached data from previous analyses for 0 out of 1 files. These files were not parsed.
+12:14:08.158 INFO  Sensor Python Sensor [python] (done) | time=1171ms
+12:14:08.158 INFO  Sensor Cobertura Sensor for Python coverage [python]
+12:14:08.172 INFO  Sensor Cobertura Sensor for Python coverage [python] (done) | time=14ms
+12:14:08.173 INFO  Sensor PythonXUnitSensor [python]
+12:14:08.181 INFO  Sensor PythonXUnitSensor [python] (done) | time=8ms
+12:14:08.183 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+12:14:08.185 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+12:14:08.186 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+12:14:08.186 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
+12:14:08.187 INFO  Sensor IaC CloudFormation Sensor [iac]
+12:14:08.199 INFO  0 source files to be analyzed
+12:14:08.210 INFO  0/0 source files have been analyzed
+12:14:08.210 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=23ms
+12:14:08.210 INFO  Sensor IaC Kubernetes Sensor [iac]
+12:14:08.214 INFO  2 source files to be analyzed
+12:14:08.279 INFO  2/2 source files have been analyzed
+12:14:08.279 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=69ms
+12:14:08.279 INFO  Sensor JavaScript analysis [javascript]
+12:14:10.568 ERROR Error when running: 'node -v'. Is Node.js available during analysis?
+org.sonarsource.nodejs.NodeCommandException: Error when running: 'node -v'. Is Node.js available during analysis?
+	at org.sonarsource.nodejs.NodeCommand.start(NodeCommand.java:79)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.getVersion(NodeCommandBuilderImpl.java:203)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.checkNodeCompatibility(NodeCommandBuilderImpl.java:169)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.build(NodeCommandBuilderImpl.java:143)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.initNodeCommand(EslintBridgeServerImpl.java:201)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.startServer(EslintBridgeServerImpl.java:142)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.startServerLazily(EslintBridgeServerImpl.java:233)
+	at org.sonar.plugins.javascript.eslint.AbstractEslintSensor.execute(AbstractEslintSensor.java:68)
+	at org.sonar.scanner.sensor.AbstractSensorWrapper.analyse(AbstractSensorWrapper.java:64)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:88)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.lambda$execute$1(ModuleSensorsExecutor.java:61)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.withModuleStrategy(ModuleSensorsExecutor.java:79)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:61)
+	at org.sonar.scanner.scan.SpringModuleScanContainer.doAfterStart(SpringModuleScanContainer.java:82)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:188)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:167)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.scan(SpringProjectScanContainer.java:403)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.scanRecursively(SpringProjectScanContainer.java:399)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.doAfterStart(SpringProjectScanContainer.java:368)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:188)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:167)
+	at org.sonar.scanner.bootstrap.SpringGlobalContainer.doAfterStart(SpringGlobalContainer.java:137)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:188)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:167)
+	at org.sonar.batch.bootstrapper.Batch.doExecute(Batch.java:72)
+	at org.sonar.batch.bootstrapper.Batch.execute(Batch.java:66)
+	at org.sonarsource.scanner.lib.internal.batch.BatchIsolatedLauncher.execute(BatchIsolatedLauncher.java:41)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.sonarsource.scanner.lib.internal.facade.inprocess.IsolatedLauncherProxy.invoke(IsolatedLauncherProxy.java:62)
+	at jdk.proxy3/jdk.proxy3.$Proxy2.execute(Unknown Source)
+	at org.sonarsource.scanner.lib.internal.facade.inprocess.InProcessScannerEngineFacade.doAnalyze(InProcessScannerEngineFacade.java:38)
+	at org.sonarsource.scanner.lib.internal.facade.AbstractScannerEngineFacade.analyze(AbstractScannerEngineFacade.java:65)
+	at org.sonarsource.scanner.cli.Main.analyze(Main.java:79)
+	at org.sonarsource.scanner.cli.Main.main(Main.java:64)
+Caused by: java.io.IOException: Cannot run program "node": Exec failed, error: 2 (No such file or directory) 
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1170)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1089)
+	at org.sonarsource.nodejs.ProcessWrapperImpl.startProcess(ProcessWrapperImpl.java:39)
+	at org.sonarsource.nodejs.NodeCommand.start(NodeCommand.java:77)
+	... 34 common frames omitted
+Caused by: java.io.IOException: Exec failed, error: 2 (No such file or directory) 
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:295)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:225)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1126)
+	... 37 common frames omitted
+
+12:14:10.569 INFO  Hit the cache for 0 out of 0
+12:14:10.571 INFO  Miss the cache for 0 out of 0
+12:14:10.571 INFO  Sensor JavaScript analysis [javascript] (done) | time=2292ms
+12:14:10.571 INFO  Sensor TypeScript analysis [javascript]
+12:14:10.573 INFO  No input files found for analysis
+12:14:10.574 INFO  Hit the cache for 0 out of 0
+12:14:10.574 INFO  Miss the cache for 0 out of 0
+12:14:10.574 INFO  Sensor TypeScript analysis [javascript] (done) | time=3ms
+12:14:10.574 INFO  Sensor JavaScript inside YAML analysis [javascript]
+12:14:10.579 INFO  No input files found for analysis
+12:14:10.579 INFO  Hit the cache for 0 out of 0
+12:14:10.579 INFO  Miss the cache for 0 out of 0
+12:14:10.579 INFO  Sensor JavaScript inside YAML analysis [javascript] (done) | time=5ms
+12:14:10.579 INFO  Sensor CSS Rules [javascript]
+12:14:10.581 INFO  Hit the cache for 0 out of 0
+12:14:10.581 INFO  Miss the cache for 0 out of 0
+12:14:10.581 INFO  Sensor CSS Rules [javascript] (done) | time=2ms
+12:14:10.582 INFO  Sensor CSS Metrics [javascript]
+12:14:10.839 INFO  Sensor CSS Metrics [javascript] (done) | time=257ms
+12:14:10.840 INFO  Sensor C# Project Type Information [csharp]
+12:14:10.841 INFO  Sensor C# Project Type Information [csharp] (done) | time=1ms
+12:14:10.841 INFO  Sensor C# Analysis Log [csharp]
+12:14:10.871 INFO  Sensor C# Analysis Log [csharp] (done) | time=30ms
+12:14:10.871 INFO  Sensor C# Properties [csharp]
+12:14:10.871 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+12:14:10.871 INFO  Sensor HTML [web]
+12:14:10.880 INFO  Sensor HTML [web] (done) | time=9ms
+12:14:10.881 INFO  Sensor TextAndSecretsSensor [text]
+12:14:10.898 INFO  5 source files to be analyzed
+12:14:11.026 INFO  5/5 source files have been analyzed
+12:14:11.026 INFO  Sensor TextAndSecretsSensor [text] (done) | time=145ms
+12:14:11.026 INFO  Sensor VB.NET Project Type Information [vbnet]
+12:14:11.027 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+12:14:11.027 INFO  Sensor VB.NET Analysis Log [vbnet]
+12:14:11.043 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=16ms
+12:14:11.043 INFO  Sensor VB.NET Properties [vbnet]
+12:14:11.044 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+12:14:11.044 INFO  Sensor IaC Docker Sensor [iac]
+12:14:11.045 INFO  1 source file to be analyzed
+12:14:11.184 INFO  1/1 source file has been analyzed
+12:14:11.184 INFO  Sensor IaC Docker Sensor [iac] (done) | time=140ms
+12:14:11.189 INFO  ------------- Run sensors on project
+12:14:11.283 INFO  Sensor Analysis Warnings import [csharp]
+12:14:11.284 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+12:14:11.284 INFO  Sensor Zero Coverage Sensor
+12:14:11.292 INFO  Sensor Zero Coverage Sensor (done) | time=8ms
+12:14:11.298 INFO  SCM Publisher SCM provider for this project is: git
+12:14:11.300 INFO  SCM Publisher 6 source files to be analyzed
+12:14:11.635 INFO  SCM Publisher 6/6 source files have been analyzed (done) | time=334ms
+12:14:11.642 INFO  CPD Executor Calculating CPD for 1 file
+12:14:11.651 INFO  CPD Executor CPD calculation finished (done) | time=9ms
+12:14:11.784 INFO  Analysis report generated in 127ms, dir size=234.2 kB
+12:14:11.820 INFO  Analysis report compressed in 34ms, zip size=53.0 kB
+12:14:12.084 INFO  Analysis report uploaded in 264ms
+12:14:12.088 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://13.201.85.13:9000/dashboard?id=fast-api-chatbot-key
+12:14:12.088 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+12:14:12.089 INFO  More about the report processing at http://13.201.85.13:9000/api/ce/task?id=AaINelpfaawbTAK-cc1B
+12:14:12.665 INFO  Analysis total time: 11.600 s
+12:14:12.667 INFO  EXECUTION SUCCESS
+12:14:12.667 INFO  Total time: 14.485s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build & Push Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] sh
++ echo ****
++ docker login -u ashin2002 --password-stdin
+Login Succeeded
++ docker build -t ashin2002/fast-api-chatbot:3 -t ashin2002/fast-api-chatbot:latest -f Dockerfile .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  216.1kB
+Step 1/10 : FROM python:3.11-slim
+3.11-slim: Pulling from library/python
+7cb68d39cd28: Pulling fs layer
+40748add9f4f: Pulling fs layer
+ac4f3e55c849: Pulling fs layer
+03bf319e97a9: Pulling fs layer
+7cb68d39cd28: Download complete
+ac4f3e55c849: Download complete
+03bf319e97a9: Download complete
+40748add9f4f: Download complete
+f6984b1a9430: Download complete
+e4c916ade7df: Download complete
+40748add9f4f: Pull complete
+ac4f3e55c849: Pull complete
+7cb68d39cd28: Pull complete
+03bf319e97a9: Pull complete
+Digest: sha256:139bddfb66e90ab739a881d4ce70cd49c22f57837463fba3cd59639091313df1
+Status: Downloaded newer image for python:3.11-slim
+ ---> 139bddfb66e9
+Step 2/10 : ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1
+ ---> Running in 8215c1823b98
+ ---> Removed intermediate container 8215c1823b98
+ ---> 931a235f1de3
+Step 3/10 : WORKDIR /app
+ ---> Running in 3e2d2e1f32b3
+ ---> Removed intermediate container 3e2d2e1f32b3
+ ---> 365683c5fca0
+Step 4/10 : COPY requirements.txt .
+ ---> 159a63f43f06
+Step 5/10 : RUN pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r requirements.txt
+ ---> Running in e2f64db1c6a8
+Requirement already satisfied: pip in /usr/local/lib/python3.11/site-packages (24.0)
+Collecting pip
+  Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 115.9 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 24.0
+    Uninstalling pip-24.0:
+      Successfully uninstalled pip-24.0
+Successfully installed pip-26.3
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mCollecting fastapi>=0.110.0 (from -r requirements.txt (line 1))
+  Downloading fastapi-0.165.0-py3-none-any.whl.metadata (27 kB)
+Collecting uvicorn>=0.28.0 (from -r requirements.txt (line 2))
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting google-genai>=0.1.1 (from -r requirements.txt (line 3))
+  Downloading google_genai-3.6.1-py3-none-any.whl.metadata (61 kB)
+Collecting python-dotenv>=1.0.1 (from -r requirements.txt (line 4))
+  Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting pydantic>=2.6.0 (from -r requirements.txt (line 5))
+  Downloading pydantic-2.14.4-py3-none-any.whl.metadata (143 kB)
+Collecting starlette>=1.6.0 (from fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting anyio>=4.1.0 (from fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading annotated_doc-0.0.7-py3-none-any.whl.metadata (6.4 kB)
+Collecting opentelemetry-api>=1.44.0 (from fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+Collecting click>=7.0 (from uvicorn>=0.28.0->-r requirements.txt (line 2))
+  Downloading click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn>=0.28.0->-r requirements.txt (line 2))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting google-auth<3.0.0,>=2.56.0 (from google-auth[requests]<3.0.0,>=2.56.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading google_auth-2.63.1-py3-none-any.whl.metadata (6.0 kB)
+Collecting httpx2<3.0.0,>=2.0.0 (from google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading httpx2-2.16.2-py3-none-any.whl.metadata (10.0 kB)
+Collecting requests<3.0.0,>=2.28.1 (from google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting tenacity<9.2.0,>=8.2.3 (from google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+Collecting websockets<18.0,>=13.0.0 (from google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading websockets-17.4-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+Collecting distro<2,>=1.7.0 (from google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting sniffio (from google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.6.0->-r requirements.txt (line 5))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.5 (from pydantic>=2.6.0->-r requirements.txt (line 5))
+  Downloading pydantic_core-2.50.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.6 kB)
+Collecting idna>=2.8 (from anyio>=4.1.0->fastapi>=0.110.0->-r requirements.txt (line 1))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting cryptography>=38.0.3 (from google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+Collecting httpcore2==2.16.2 (from httpx2<3.0.0,>=2.0.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading httpcore2-2.16.2-py3-none-any.whl.metadata (28 kB)
+Collecting truststore>=0.10 (from httpx2<3.0.0,>=2.0.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.28.1->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading charset_normalizer-3.5.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (43 kB)
+Collecting urllib3<3,>=1.26 (from requests<3.0.0,>=2.28.1->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests<3.0.0,>=2.28.1->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading certifi-2026.11.20-py3-none-any.whl.metadata (2.5 kB)
+Collecting cffi>=2.0.0 (from cryptography>=38.0.3->google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=38.0.3->google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3.0.0,>=2.56.0->google-auth[requests]<3.0.0,>=2.56.0->google-genai>=0.1.1->-r requirements.txt (line 3))
+  Downloading pyasn1-0.6.5-py3-none-any.whl.metadata (8.4 kB)
+Downloading fastapi-0.165.0-py3-none-any.whl (159 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Downloading google_genai-3.6.1-py3-none-any.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 391.6 MB/s  0:00:00
+Downloading pydantic-2.14.4-py3-none-any.whl (494 kB)
+Downloading pydantic_core-2.50.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 554.2 MB/s  0:00:00
+Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+Downloading google_auth-2.63.1-py3-none-any.whl (271 kB)
+Downloading httpx2-2.16.2-py3-none-any.whl (97 kB)
+Downloading httpcore2-2.16.2-py3-none-any.whl (85 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading charset_normalizer-3.5.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (263 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading tenacity-9.1.4-py3-none-any.whl (28 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websockets-17.4-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (226 kB)
+Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading annotated_doc-0.0.7-py3-none-any.whl (5.3 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading certifi-2026.11.20-py3-none-any.whl (127 kB)
+Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 306.6 MB/s  0:00:00
+Downloading cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (217 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Downloading pyasn1-0.6.5-py3-none-any.whl (84 kB)
+Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Installing collected packages: websockets, urllib3, typing-extensions, truststore, tenacity, sniffio, python-dotenv, pycparser, pyasn1, idna, h11, distro, click, charset_normalizer, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, requests, pydantic-core, pyasn1-modules, opentelemetry-api, httpcore2, cffi, anyio, starlette, pydantic, httpx2, cryptography, google-auth, fastapi, google-genai
+
+Successfully installed annotated-doc-0.0.7 annotated-types-0.8.0 anyio-4.16.0 certifi-2026.11.20 cffi-2.1.1 charset_normalizer-3.5.3 click-8.5.1 cryptography-50.0.2 distro-1.9.0 fastapi-0.165.0 google-auth-2.63.1 google-genai-3.6.1 h11-0.16.0 httpcore2-2.16.2 httpx2-2.16.2 idna-3.20 opentelemetry-api-1.45.2 pyasn1-0.6.5 pyasn1-modules-0.4.2 pycparser-3.12 pydantic-2.14.4 pydantic-core-2.50.5 python-dotenv-1.2.4 requests-2.34.2 sniffio-1.3.1 starlette-1.10.0 tenacity-9.1.4 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.5 urllib3-2.8.0 uvicorn-0.54.0 websockets-17.4
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[0m ---> Removed intermediate container e2f64db1c6a8
+ ---> 5586c9c31ff8
+Step 6/10 : COPY . /app/
+ ---> 153a72461c22
+Step 7/10 : RUN adduser --disabled-password --gecos "" appuser &&     chown -R appuser:appuser /app
+ ---> Running in 7776bb4bc879
+usermod: no changes
+ ---> Removed intermediate container 7776bb4bc879
+ ---> 0cda64183a5e
+Step 8/10 : USER appuser
+ ---> Running in 7b1f411c2c3b
+ ---> Removed intermediate container 7b1f411c2c3b
+ ---> f04bc4cae8b7
+Step 9/10 : EXPOSE 8000
+ ---> Running in d521406c1cfe
+ ---> Removed intermediate container d521406c1cfe
+ ---> abbc4c5afd7b
+Step 10/10 : CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ ---> Running in a98ba84f2865
+ ---> Removed intermediate container a98ba84f2865
+ ---> 8acd30f61bb4
+Successfully built 8acd30f61bb4
+Successfully tagged ashin2002/fast-api-chatbot:3
+Successfully tagged ashin2002/fast-api-chatbot:latest
++ docker push ashin2002/fast-api-chatbot:3
+The push refers to repository [docker.io/ashin2002/fast-api-chatbot]
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Waiting
+84118e1fff2b: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+40748add9f4f: Mounted from library/python
+84118e1fff2b: Waiting
+03bf319e97a9: Mounted from library/python
+7cb68d39cd28: Waiting
+ac4f3e55c849: Mounted from library/python
+7cb68d39cd28: Mounted from library/python
+29db373b199e: Pushed
+8beeeb9d6913: Pushed
+84118e1fff2b: Pushed
+50c1516cee54: Pushed
+5cd56607e371: Pushed
+3: digest: sha256:8acd30f61bb4affbd0df5ea4f6c3b501e8c8f89840434bf910eb2753f0d3f110 size: 2273
++ docker push ashin2002/fast-api-chatbot:latest
+The push refers to repository [docker.io/ashin2002/fast-api-chatbot]
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+40748add9f4f: Layer already exists
+ac4f3e55c849: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+ac4f3e55c849: Waiting
+7cb68d39cd28: Waiting
+84118e1fff2b: Waiting
+ac4f3e55c849: Layer already exists
+7cb68d39cd28: Waiting
+84118e1fff2b: Layer already exists
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+8beeeb9d6913: Waiting
+03bf319e97a9: Waiting
+29db373b199e: Waiting
+5cd56607e371: Waiting
+50c1516cee54: Waiting
+7cb68d39cd28: Waiting
+8beeeb9d6913: Layer already exists
+03bf319e97a9: Layer already exists
+29db373b199e: Layer already exists
+5cd56607e371: Layer already exists
+50c1516cee54: Layer already exists
+7cb68d39cd28: Layer already exists
+latest: digest: sha256:8acd30f61bb4affbd0df5ea4f6c3b501e8c8f89840434bf910eb2753f0d3f110 size: 2273
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Update Manifest Repo)
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/fast-api-chatbot/manifest-workspace
+[Pipeline] {
+[Pipeline] sh
++ git clone https://github.com/Ashinkp/fast-api-chatbot.git .
+Cloning into '.'...
+[Pipeline] withCredentials
+Masking supported pattern matches of $GH_TOKEN
+[Pipeline] {
+[Pipeline] sh
++ git remote set-url origin https://Ashinkp:****@github.com/Ashinkp/fast-api-chatbot.git
++ git pull --rebase origin main
+From https://github.com/Ashinkp/fast-api-chatbot
+ * branch            main       -> FETCH_HEAD
+Already up to date.
++ sed -i /name: fast-api-chatbot/{n;s|image:.*|image: ashin2002/fast-api-chatbot:3|} k8s/Deployment.yaml
++ git config user.name Ashinkp
++ git config user.email ashinkp33@gmail.com
++ git commit -am chore(manifest): update fast-api-chatbot image tag to 3 [skip ci]
+[main 69d70ef] chore(manifest): update fast-api-chatbot image tag to 3 [skip ci]
+ 1 file changed, 1 insertion(+), 1 deletion(-)
++ git push origin main
+To https://github.com/Ashinkp/fast-api-chatbot.git
+   117d835..69d70ef  main -> main
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline executed successfully! fast-api-chatbot image built, pushed, and manifest repo updated.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
